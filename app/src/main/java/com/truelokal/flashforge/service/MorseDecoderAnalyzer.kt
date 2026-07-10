@@ -2,7 +2,6 @@ package com.truelokal.flashforge.service
 
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
-import java.nio.ByteBuffer
 
 /**
  * Image analyzer to process camera frames in real-time and calculate luma (luminance).
