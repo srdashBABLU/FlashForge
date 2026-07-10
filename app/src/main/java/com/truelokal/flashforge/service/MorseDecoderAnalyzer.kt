@@ -6,30 +6,18 @@ import java.nio.ByteBuffer
 
 /**
  * Image analyzer to process camera frames in real-time and calculate luma (luminance).
- *
- * It focuses on the central region of the camera viewfinder (30% center box)
- * to avoid noise from surrounding ambient light. It updates the min and max luma
- * dynamically to determine the threshold for detecting flash signals (ON/OFF).
+ * Uses a sliding history window for smooth threshold adjustments and a hysteresis filter
+ * to handle frame rate jitter and noise on low-end devices.
  */
 class MorseDecoderAnalyzer(
     private val onLuminanceResult: (Double, Boolean) -> Unit
 ) : ImageAnalysis.Analyzer {
 
-    private var frameCount = 0
-    private var minLuma = 255.0
-    private var maxLuma = 0.0
-    private var lastDynamicResetTime = System.currentTimeMillis()
-
-    // Helper extension to copy ByteBuffer to ByteArray safely
-    private fun ByteBuffer.toByteArray(): ByteArray {
-        rewind()
-        val data = ByteArray(remaining())
-        get(data)
-        return data
-    }
+    private val lumaHistory = ArrayList<Double>()
+    private val maxHistorySize = 45 // Moving window (approx 1.5 seconds of frames)
+    private var lastPublishedState = false
 
     override fun analyze(image: ImageProxy) {
-        // The Y plane (index 0) represents the luminance channel (grayscale)
         val plane = image.planes[0]
         val buffer = plane.buffer
         val width = image.width
@@ -37,7 +25,7 @@ class MorseDecoderAnalyzer(
         val rowStride = plane.rowStride
         val pixelStride = plane.pixelStride
 
-        // Crop window: central 30% area
+        // Crop window: central 30% area to isolate the flash source
         val cropW = (width * 0.3).toInt()
         val cropH = (height * 0.3).toInt()
         val startX = (width - cropW) / 2
@@ -46,11 +34,9 @@ class MorseDecoderAnalyzer(
         var totalLuma = 0L
         var sampleCount = 0
 
-        // Read Y-plane pixels in the cropped region only
-        val rowBuffer = ByteArray(width) // Temp row buffer for fast retrieval
+        val rowBuffer = ByteArray(width)
         for (y in startY until (startY + cropH)) {
             buffer.position(y * rowStride)
-            // Retrieve row segment or elements depending on pixelStride
             if (pixelStride == 1) {
                 buffer.get(rowBuffer, 0, width)
                 for (x in startX until (startX + cropW)) {
@@ -59,7 +45,6 @@ class MorseDecoderAnalyzer(
                     sampleCount++
                 }
             } else {
-                // Slower fallback for pixelStride > 1
                 for (x in startX until (startX + cropW)) {
                     val index = y * rowStride + x * pixelStride
                     if (index < buffer.capacity()) {
@@ -73,32 +58,34 @@ class MorseDecoderAnalyzer(
 
         val avgLuma = if (sampleCount > 0) totalLuma.toDouble() / sampleCount else 0.0
 
-        // Dynamically adjust min/max threshold every 5 seconds to adapt to changes in ambient room lighting
-        val currentTime = System.currentTimeMillis()
-        if (currentTime - lastDynamicResetTime > 5000) {
-            // Decaying dynamic adaptation
-            minLuma = (minLuma * 0.6) + (avgLuma * 0.4)
-            maxLuma = (maxLuma * 0.6) + (avgLuma * 0.4)
-            lastDynamicResetTime = currentTime
-        } else {
-            if (avgLuma < minLuma) minLuma = avgLuma
-            if (avgLuma > maxLuma) maxLuma = avgLuma
+        // Maintain sliding history window for smooth tracking of min/max values
+        lumaHistory.add(avgLuma)
+        if (lumaHistory.size > maxHistorySize) {
+            lumaHistory.removeAt(0)
         }
 
-        // Avoid division by zero and minimal variation issues
+        val minLuma = lumaHistory.minOrNull() ?: avgLuma
+        val maxLuma = lumaHistory.maxOrNull() ?: avgLuma
         val lumaRange = maxLuma - minLuma
-        val isLightOn = if (lumaRange > 20.0) {
-            // Brightness threshold: 60% mark between low and high
-            val threshold = minLuma + (lumaRange * 0.6)
-            avgLuma > threshold
+
+        // Hysteresis boundary threshold to prevent ON/OFF state flickering/jitter
+        val isLightOn = if (lumaRange > 18.0) {
+            val highThreshold = minLuma + (lumaRange * 0.58)
+            val lowThreshold = minLuma + (lumaRange * 0.42)
+            if (lastPublishedState) {
+                avgLuma > lowThreshold
+            } else {
+                avgLuma > highThreshold
+            }
         } else {
-            false // Light difference is too low to distinguish
+            false
         }
 
-        // Notify client viewmodel
+        lastPublishedState = isLightOn
+
+        // Notify controller / ViewModel
         onLuminanceResult(avgLuma, isLightOn)
 
-        // Close image to release resources and trigger the next analyzer frame
         image.close()
     }
 }
