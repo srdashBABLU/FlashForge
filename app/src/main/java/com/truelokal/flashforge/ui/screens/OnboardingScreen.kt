@@ -64,6 +64,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun OnboardingScreen(
     onFinished: () -> Unit,
+    isDark: Boolean,
     modifier: Modifier = Modifier
 ) {
     val pagerState = rememberPagerState(pageCount = { 3 })
@@ -85,10 +86,11 @@ fun OnboardingScreen(
             .fillMaxSize()
             .background(
                 Brush.verticalGradient(
-                    colors = listOf(
-                        Color(0xFF070710),
-                        Color(0xFF0F0F24)
-                    )
+                    colors = if (isDark) {
+                        listOf(Color(0xFF070710), Color(0xFF0F0F24))
+                    } else {
+                        listOf(Color(0xFFF5F5FA), Color(0xFFE8E8F0))
+                    }
                 )
             )
             .statusBarsPadding()
@@ -125,19 +127,22 @@ fun OnboardingScreen(
                         title = "Welcome to FlashForge",
                         description = "Transform your device flash into a professional illumination and communication toolkit. Experience next-level utility.",
                         icon = Icons.Rounded.FlashlightOn,
-                        accentColor = AccentAmber
+                        accentColor = AccentAmber,
+                        isDark = isDark
                     )
                     1 -> OnboardingPageContent(
                         title = "Intelligent Signals",
                         description = "Broadcast standard SOS alerts, adjust flashlight intensity smoothly, or run custom strobes with precise microsecond timing.",
                         icon = Icons.Rounded.Security,
-                        accentColor = AccentAmberLight
+                        accentColor = AccentAmberLight,
+                        isDark = isDark
                     )
                     2 -> OnboardingPageContent(
                         title = "Optical Morse Decoder",
                         description = "Point the camera at any light flash to decode it into readable text instantly using local secure frames processing.",
                         icon = Icons.Rounded.CameraAlt,
-                        accentColor = AccentAmberDark
+                        accentColor = AccentAmberDark,
+                        isDark = isDark
                     )
                 }
             }
@@ -168,7 +173,7 @@ fun OnboardingScreen(
                                 .clip(CircleShape)
                                 .background(
                                     if (isSelected) animatedAccentColor
-                                    else Color.White.copy(alpha = 0.2f)
+                                    else (if (isDark) Color.White.copy(alpha = 0.2f) else Color.Black.copy(alpha = 0.15f))
                                 )
                         )
                     }
@@ -220,7 +225,8 @@ private fun OnboardingPageContent(
     title: String,
     description: String,
     icon: ImageVector,
-    accentColor: Color
+    accentColor: Color,
+    isDark: Boolean
 ) {
     Column(
         modifier = Modifier
@@ -269,14 +275,15 @@ private fun OnboardingPageContent(
         // Glassmorphic outlined cards
         Card(
             colors = CardDefaults.cardColors(
-                containerColor = Color(0x0CFFFFFF)
+                containerColor = if (isDark) Color(0x0CFFFFFF) else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.6f)
             ),
             border = CardDefaults.outlinedCardBorder().copy(
                 brush = Brush.linearGradient(
-                    colors = listOf(
-                        Color.White.copy(alpha = 0.18f),
-                        Color.White.copy(alpha = 0.02f)
-                    )
+                    colors = if (isDark) {
+                        listOf(Color.White.copy(alpha = 0.18f), Color.White.copy(alpha = 0.02f))
+                    } else {
+                        listOf(Color.Black.copy(alpha = 0.12f), Color.Black.copy(alpha = 0.02f))
+                    }
                 )
             ),
             shape = RoundedCornerShape(28.dp),
@@ -292,7 +299,7 @@ private fun OnboardingPageContent(
                         fontWeight = FontWeight.Bold,
                         fontSize = 24.sp
                     ),
-                    color = Color.White,
+                    color = if (isDark) Color.White else MaterialTheme.colorScheme.onSurface,
                     textAlign = TextAlign.Center
                 )
                 Spacer(modifier = Modifier.height(16.dp))
@@ -302,7 +309,7 @@ private fun OnboardingPageContent(
                         lineHeight = 26.sp,
                         fontSize = 15.sp
                     ),
-                    color = Color.White.copy(alpha = 0.7f),
+                    color = if (isDark) Color.White.copy(alpha = 0.7f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f),
                     textAlign = TextAlign.Center
                 )
             }

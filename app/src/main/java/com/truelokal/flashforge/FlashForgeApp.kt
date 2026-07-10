@@ -29,7 +29,8 @@ fun FlashForgeApp(
             OnboardingScreen(
                 onFinished = {
                     viewModel.completeOnboarding()
-                }
+                },
+                isDark = isDarkTheme
             )
         } else {
             FlashlightScreen(
