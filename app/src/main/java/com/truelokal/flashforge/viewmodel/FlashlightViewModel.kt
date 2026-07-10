@@ -433,7 +433,7 @@ class FlashlightViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     companion object {
-        private const val UNIT_MS = 120L
+        private const val UNIT_MS = 200L
         private val MORSE_CODE_MAP = mapOf(
             'A' to "·—", 'B' to "—···", 'C' to "—·—·", 'D' to "—··",
             'E' to "·", 'F' to "··—·", 'G' to "——·", 'H' to "····",
