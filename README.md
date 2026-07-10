@@ -38,63 +38,67 @@
 ## ✨ Features
 
 ### 🔦 Core Flashlight
-| Feature | Description |
-|:---|:---|
-| **Instant Toggle** | Zero permission prompts — tap and the flashlight turns on immediately |
-| **Variable Brightness** | Circular arc dial to control torch intensity on supported devices (API 33+) |
-| **Strobe Mode** | ~6Hz rapid flash pattern for signaling |
-| **SOS Mode** | Proper Morse code pattern (··· ——— ···) with accurate timing |
+
+| Feature                  | Description                                                                           |
+| :----------------------- | :------------------------------------------------------------------------------------ |
+| **Instant Toggle**       | Zero permission prompts — tap and the flashlight turns on immediately                 |
+| **Variable Brightness**  | Circular arc dial to control torch intensity on supported devices (API 33+)           |
+| **Strobe Mode**          | ~6Hz rapid flash pattern for signaling                                                |
+| **SOS Mode**             | Proper Morse code pattern (··· ——— ···) with accurate timing                          |
 | **Morse Code Messaging** | Type any text message and transmit it as flash signals using International Morse Code |
-| **Auto-Off** | Flashlight automatically turns off when the app goes to background |
+| **Auto-Off**             | Flashlight automatically turns off when the app goes to background                    |
 
 ### 🎨 Premium Design
-| Feature | Description |
-|:---|:---|
-| **Animated Power Button** | Scale bounce on press, gray → amber color morph, pulsing outer glow ring |
-| **Ambient Glow Effect** | Full-screen radial gradient that pulses with the flashlight state |
-| **Circular Intensity Dial** | 270° arc slider with thumb, tick marks, center percentage display |
-| **Smooth Transitions** | Every state change animates — colors, scales, visibility, text |
-| **Haptic Feedback** | Tactile response on toggle and brightness changes (every 10% step) |
+
+| Feature                     | Description                                                              |
+| :-------------------------- | :----------------------------------------------------------------------- |
+| **Animated Power Button**   | Scale bounce on press, gray → amber color morph, pulsing outer glow ring |
+| **Ambient Glow Effect**     | Full-screen radial gradient that pulses with the flashlight state        |
+| **Circular Intensity Dial** | 270° arc slider with thumb, tick marks, center percentage display        |
+| **Smooth Transitions**      | Every state change animates — colors, scales, visibility, text           |
+| **Haptic Feedback**         | Tactile response on toggle and brightness changes (every 10% step)       |
 
 ### 🌓 Theming
-| Feature | Description |
-|:---|:---|
-| **Material You** | Dynamic color schemes from wallpaper on Android 12+ |
-| **Dark Mode** | Hand-crafted deep navy palette with amber accents |
-| **Light Mode** | Clean white/gray palette with warm amber highlights |
-| **Manual Toggle** | Switch between dark and light from the top bar |
-| **Google Fonts** | Inter typeface — modern, clean, highly readable |
+
+| Feature           | Description                                         |
+| :---------------- | :-------------------------------------------------- |
+| **Material You**  | Dynamic color schemes from wallpaper on Android 12+ |
+| **Dark Mode**     | Hand-crafted deep navy palette with amber accents   |
+| **Light Mode**    | Clean white/gray palette with warm amber highlights |
+| **Manual Toggle** | Switch between dark and light from the top bar      |
+| **Google Fonts**  | Inter typeface — modern, clean, highly readable     |
 
 ### 📡 Morse Code Utilities
-| Feature | Description |
-|:---|:---|
+
+| Feature                       | Description                                                                    |
+| :---------------------------- | :----------------------------------------------------------------------------- |
 | **Text-to-Flash Transmitter** | Type paragraphs and transmit them as light signals using ITU Morse code timing |
-| **Real-time Preview** | Display the full dot/dash Morse sequence as you type |
-| **Camera Morse Decoder** | Live camera analysis translating light pulses back to text on-screen |
-| **Viewfinder Target HUD** | Guided target box overlays indicating sample region for optimal analysis |
-| **Dynamic Thresholding** | Automatic luminance calibration adjusting to background room lighting |
+| **Real-time Preview**         | Display the full dot/dash Morse sequence as you type                           |
+| **Camera Morse Decoder**      | Live camera analysis translating light pulses back to text on-screen           |
+| **Viewfinder Target HUD**     | Guided target box overlays indicating sample region for optimal analysis       |
+| **Dynamic Thresholding**      | Automatic luminance calibration adjusting to background room lighting          |
 
 ### 🚀 User Experience (UX)
-| Feature | Description |
-|:---|:---|
-| **Premium Onboarding** | Multipager sliding cards on first run introducing app utilities |
-| **Permission Dialogue** | Secure pre-consent glassmorphic details explaining local processing |
-| **Targeted Ambient Glow** | Pulsing radial gradients positioned exactly behind toggle keys |
-| **Haptic Feedback** | Tactile vibrations on keys and dial slider ticks |
-| **Clipboard Copy** | Quick copy button overlays for translated and decoded Morse text |
-| **Clean Navigation** | Custom indicator tabs to slide between torch controls and camera decoder |
 
-
+| Feature                   | Description                                                              |
+| :------------------------ | :----------------------------------------------------------------------- |
+| **Premium Onboarding**    | Multipager sliding cards on first run introducing app utilities          |
+| **Permission Dialogue**   | Secure pre-consent glassmorphic details explaining local processing      |
+| **Targeted Ambient Glow** | Pulsing radial gradients positioned exactly behind toggle keys           |
+| **Haptic Feedback**       | Tactile vibrations on keys and dial slider ticks                         |
+| **Clipboard Copy**        | Quick copy button overlays for translated and decoded Morse text         |
+| **Clean Navigation**      | Custom indicator tabs to slide between torch controls and camera decoder |
 
 ### 📱 Compatibility & Orientation
-| Feature | Description |
-|:---|:---|
-| **Android 9–16+** | minSdk 28, targetSdk 36 — broadest modern coverage |
-| **Landscape Support** | Adaptive two-column layout in landscape orientation |
-| **Orientation Changes** | Smooth UI transitions when rotating the device |
+
+| Feature                  | Description                                            |
+| :----------------------- | :----------------------------------------------------- |
+| **Android 9–16+**        | minSdk 28, targetSdk 36 — broadest modern coverage     |
+| **Landscape Support**    | Adaptive two-column layout in landscape orientation    |
+| **Orientation Changes**  | Smooth UI transitions when rotating the device         |
 | **Graceful Degradation** | Intensity dial only appears on devices that support it |
-| **No Permissions** | Torch API doesn't require CAMERA permission |
-| **Edge-to-Edge** | Immersive display with transparent system bars |
+| **No Permissions**       | Torch API doesn't require CAMERA permission            |
+| **Edge-to-Edge**         | Immersive display with transparent system bars         |
 
 ---
 
@@ -150,16 +154,16 @@ graph LR
 
 ## 🛠️ Tech Stack
 
-| Component | Version | Purpose |
-|:---|:---|:---|
-| **Kotlin** | 2.1.0 | Primary language |
-| **Jetpack Compose** | BOM 2025.01.01 | Declarative UI framework |
-| **Material 3** | via BOM | Design system + dynamic theming |
-| **Lifecycle ViewModel** | 2.8.7 | State management |
-| **Activity Compose** | 1.9.3 | Compose integration |
-| **Google Fonts** | via Compose UI Text | Inter typeface |
-| **Camera2 API** | Platform | Torch control + intensity |
-| **AGP** | 8.7.3 | Build system |
+| Component               | Version             | Purpose                         |
+| :---------------------- | :------------------ | :------------------------------ |
+| **Kotlin**              | 2.1.0               | Primary language                |
+| **Jetpack Compose**     | BOM 2025.01.01      | Declarative UI framework        |
+| **Material 3**          | via BOM             | Design system + dynamic theming |
+| **Lifecycle ViewModel** | 2.8.7               | State management                |
+| **Activity Compose**    | 1.9.3               | Compose integration             |
+| **Google Fonts**        | via Compose UI Text | Inter typeface                  |
+| **Camera2 API**         | Platform            | Torch control + intensity       |
+| **AGP**                 | 8.7.3               | Build system                    |
 
 ---
 
@@ -176,7 +180,7 @@ graph LR
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/FlashForge.git
+git clone https://github.com/srdashBABLU/FlashForge.git
 cd FlashForge
 
 # Build the debug APK
@@ -190,9 +194,9 @@ Or simply open the project in **Android Studio** and click **Run** ▶️.
 
 ### Build Variants
 
-| Variant | Command | Description |
-|:---|:---|:---|
-| Debug | `./gradlew assembleDebug` | Development build with debugging |
+| Variant | Command                     | Description                        |
+| :------ | :-------------------------- | :--------------------------------- |
+| Debug   | `./gradlew assembleDebug`   | Development build with debugging   |
 | Release | `./gradlew assembleRelease` | Minified + shrunk production build |
 
 ---
@@ -283,16 +287,16 @@ All elements are scrollable in both orientations to handle smaller screens and k
 
 ### Color Palette
 
-| Color | Hex | Usage |
-|:---|:---|:---|
-| 🟡 Accent Amber | `#FFB800` | Primary accent, active state, glow |
-| 🟡 Accent Light | `#FFD54F` | Highlight, secondary accent |
-| 🔵 Dark Background | `#0D0D1A` | Dark theme background |
-| 🔵 Dark Surface | `#1A1A2E` | Dark theme cards/surfaces |
-| ⚪ Light Background | `#F5F5FA` | Light theme background |
-| 🟠 Strobe Orange | `#FF6B35` | Strobe mode accent |
-| 🔴 SOS Red | `#FF3D3D` | SOS mode accent |
-| 🟢 Success Green | `#4CAF50` | Ready state indicator |
+| Color               | Hex       | Usage                              |
+| :------------------ | :-------- | :--------------------------------- |
+| 🟡 Accent Amber     | `#FFB800` | Primary accent, active state, glow |
+| 🟡 Accent Light     | `#FFD54F` | Highlight, secondary accent        |
+| 🔵 Dark Background  | `#0D0D1A` | Dark theme background              |
+| 🔵 Dark Surface     | `#1A1A2E` | Dark theme cards/surfaces          |
+| ⚪ Light Background | `#F5F5FA` | Light theme background             |
+| 🟠 Strobe Orange    | `#FF6B35` | Strobe mode accent                 |
+| 🔴 SOS Red          | `#FF3D3D` | SOS mode accent                    |
+| 🟢 Success Green    | `#4CAF50` | Ready state indicator              |
 
 ### Typography
 
@@ -341,17 +345,17 @@ FlashForgeTheme(dynamicColor = false) { ... }
 
 ## 📱 Compatibility
 
-| Android Version | API Level | Status | Notes |
-|:---|:---|:---|:---|
-| Android 9 (Pie) | 28 | ✅ Full | On/off only, custom theme |
-| Android 10 | 29 | ✅ Full | On/off only, custom theme |
-| Android 11 | 30 | ✅ Full | On/off only, custom theme |
-| Android 12 | 31 | ✅ Full | + Material You dynamic colors |
-| Android 12L | 32 | ✅ Full | + Material You dynamic colors |
-| Android 13 | 33 | ✅ Full | + Brightness control (if hardware supports) |
-| Android 14 | 34 | ✅ Full | + Brightness control |
-| Android 15 | 35 | ✅ Full | + Brightness control |
-| Android 16 | 36 | ✅ Full | Target SDK |
+| Android Version | API Level | Status  | Notes                                       |
+| :-------------- | :-------- | :------ | :------------------------------------------ |
+| Android 9 (Pie) | 28        | ✅ Full | On/off only, custom theme                   |
+| Android 10      | 29        | ✅ Full | On/off only, custom theme                   |
+| Android 11      | 30        | ✅ Full | On/off only, custom theme                   |
+| Android 12      | 31        | ✅ Full | + Material You dynamic colors               |
+| Android 12L     | 32        | ✅ Full | + Material You dynamic colors               |
+| Android 13      | 33        | ✅ Full | + Brightness control (if hardware supports) |
+| Android 14      | 34        | ✅ Full | + Brightness control                        |
+| Android 15      | 35        | ✅ Full | + Brightness control                        |
+| Android 16      | 36        | ✅ Full | Target SDK                                  |
 
 > **Note:** Variable brightness requires both API 33+ **and** device hardware that reports `FLASH_INFO_STRENGTH_MAXIMUM_LEVEL > 1`. On devices without hardware support, FlashForge gracefully falls back to on/off mode.
 
