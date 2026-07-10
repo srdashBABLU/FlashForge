@@ -18,9 +18,6 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.border
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -43,8 +40,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.rounded.Camera
 import androidx.compose.material.icons.rounded.ClearAll
+import androidx.compose.material.icons.rounded.ContentCopy
 import androidx.compose.material.icons.rounded.DarkMode
-import androidx.compose.material.icons.rounded.FlashlightOn
 import androidx.compose.material.icons.rounded.LightMode
 import androidx.compose.material.icons.rounded.Stop
 import androidx.compose.material3.Button
@@ -70,20 +67,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.material.icons.rounded.ContentCopy
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
-
 import com.truelokal.flashforge.ui.components.CameraPermissionDialog
 import com.truelokal.flashforge.ui.components.CameraPreviewView
 import com.truelokal.flashforge.ui.components.GlowEffect
@@ -94,7 +88,6 @@ import com.truelokal.flashforge.ui.components.StatusIndicator
 import com.truelokal.flashforge.ui.components.StrobeControls
 import com.truelokal.flashforge.ui.theme.AccentAmber
 import com.truelokal.flashforge.ui.theme.SOSColor
-import com.truelokal.flashforge.ui.theme.SuccessGreen
 import com.truelokal.flashforge.viewmodel.FlashlightUiState
 import com.truelokal.flashforge.viewmodel.StrobeMode
 

@@ -33,7 +33,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.truelokal.flashforge.ui.theme.AccentAmber
 import com.truelokal.flashforge.ui.theme.AccentGlow
-import kotlin.math.PI
 import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sin

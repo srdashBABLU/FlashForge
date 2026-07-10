@@ -23,7 +23,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.dp
-import com.truelokal.flashforge.ui.theme.AccentAmber
 import com.truelokal.flashforge.ui.theme.SOSColor
 import com.truelokal.flashforge.ui.theme.StrobeColor
 import com.truelokal.flashforge.viewmodel.StrobeMode
