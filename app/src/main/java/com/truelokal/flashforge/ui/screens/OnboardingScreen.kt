@@ -97,7 +97,9 @@ fun OnboardingScreen(
             .navigationBarsPadding()
     ) {
         // Ambient background glowing radial spot
-        Canvas(modifier = Modifier.fillMaxSize().alpha(0.35f)) {
+        Canvas(modifier = Modifier
+            .fillMaxSize()
+            .alpha(0.35f)) {
             drawCircle(
                 brush = Brush.radialGradient(
                     colors = listOf(
@@ -130,6 +132,7 @@ fun OnboardingScreen(
                         accentColor = AccentAmber,
                         isDark = isDark
                     )
+
                     1 -> OnboardingPageContent(
                         title = "Intelligent Signals",
                         description = "Broadcast standard SOS alerts, adjust flashlight intensity smoothly, or run custom strobes with precise microsecond timing.",
@@ -137,6 +140,7 @@ fun OnboardingScreen(
                         accentColor = AccentAmberLight,
                         isDark = isDark
                     )
+
                     2 -> OnboardingPageContent(
                         title = "Optical Morse Decoder",
                         description = "Point the camera at any light flash to decode it into readable text instantly using local secure frames processing.",
@@ -173,7 +177,9 @@ fun OnboardingScreen(
                                 .clip(CircleShape)
                                 .background(
                                     if (isSelected) animatedAccentColor
-                                    else (if (isDark) Color.White.copy(alpha = 0.2f) else Color.Black.copy(alpha = 0.15f))
+                                    else (if (isDark) Color.White.copy(alpha = 0.2f) else Color.Black.copy(
+                                        alpha = 0.15f
+                                    ))
                                 )
                         )
                     }
@@ -275,7 +281,9 @@ private fun OnboardingPageContent(
         // Glassmorphic outlined cards
         Card(
             colors = CardDefaults.cardColors(
-                containerColor = if (isDark) Color(0x0CFFFFFF) else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.6f)
+                containerColor = if (isDark) Color(0x0CFFFFFF) else MaterialTheme.colorScheme.surfaceVariant.copy(
+                    alpha = 0.6f
+                )
             ),
             border = CardDefaults.outlinedCardBorder().copy(
                 brush = Brush.linearGradient(
@@ -309,7 +317,9 @@ private fun OnboardingPageContent(
                         lineHeight = 26.sp,
                         fontSize = 15.sp
                     ),
-                    color = if (isDark) Color.White.copy(alpha = 0.7f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f),
+                    color = if (isDark) Color.White.copy(alpha = 0.7f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(
+                        alpha = 0.8f
+                    ),
                     textAlign = TextAlign.Center
                 )
             }

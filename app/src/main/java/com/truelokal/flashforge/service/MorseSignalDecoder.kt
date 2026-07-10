@@ -13,7 +13,7 @@ class MorseSignalDecoder(
 ) {
     private var lastState = false
     private var lastStateChangeTime = System.currentTimeMillis()
-    
+
     // Accumulates the entire raw Morse signal string (e.g. "··· ——— ··· / ·— / ·—·· ·—·· ·—")
     private val signalBuffer = StringBuilder()
 

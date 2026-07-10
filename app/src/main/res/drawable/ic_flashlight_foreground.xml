@@ -11,9 +11,9 @@
 
     <!-- Light beam -->
     <path
+        android:fillAlpha="0.6"
         android:fillColor="#FFF3D6"
-        android:pathData="M44,68 L38,82 L70,82 L64,68 Z"
-        android:fillAlpha="0.6" />
+        android:pathData="M44,68 L38,82 L70,82 L64,68 Z" />
 
     <!-- Flashlight head -->
     <path

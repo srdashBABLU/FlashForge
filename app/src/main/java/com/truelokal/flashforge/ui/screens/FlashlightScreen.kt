@@ -213,7 +213,8 @@ fun FlashlightScreen(
             ) {
                 if (selectedTab == 0) {
                     val configuration = LocalConfiguration.current
-                    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+                    val isLandscape =
+                        configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
                     if (isLandscape) {
                         LandscapeLayout(
@@ -384,7 +385,9 @@ private fun DecoderStatsCard(
 ) {
     Card(
         colors = CardDefaults.cardColors(
-            containerColor = if (isDark) Color(0x1AFFFFFF) else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.6f)
+            containerColor = if (isDark) Color(0x1AFFFFFF) else MaterialTheme.colorScheme.surfaceVariant.copy(
+                alpha = 0.6f
+            )
         ),
         shape = RoundedCornerShape(16.dp),
         modifier = Modifier.fillMaxWidth()
@@ -424,14 +427,18 @@ private fun DecoderStatsCard(
                     text = if (isLumaActive) "Flash Detected!" else "Waiting for Flash...",
                     style = MaterialTheme.typography.titleSmall,
                     fontWeight = FontWeight.Bold,
-                    color = if (isLumaActive) AccentAmber else (if (isDark) Color.White.copy(alpha = 0.6f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f))
+                    color = if (isLumaActive) AccentAmber else (if (isDark) Color.White.copy(alpha = 0.6f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(
+                        alpha = 0.8f
+                    ))
                 )
             }
 
             Text(
                 text = "Luma: ${liveLuminance.toInt()}",
                 style = MaterialTheme.typography.labelSmall,
-                color = if (isDark) Color.White.copy(alpha = 0.4f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+                color = if (isDark) Color.White.copy(alpha = 0.4f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(
+                    alpha = 0.6f
+                )
             )
         }
     }
@@ -448,7 +455,9 @@ private fun DecoderOutputCard(
 ) {
     Card(
         colors = CardDefaults.cardColors(
-            containerColor = if (isDark) Color(0xFF1E1E38) else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f)
+            containerColor = if (isDark) Color(0xFF1E1E38) else MaterialTheme.colorScheme.surfaceVariant.copy(
+                alpha = 0.4f
+            )
         ),
         shape = RoundedCornerShape(20.dp),
         modifier = modifier.fillMaxWidth()
@@ -466,7 +475,9 @@ private fun DecoderOutputCard(
                 Text(
                     text = "Decoded Output",
                     style = MaterialTheme.typography.labelLarge,
-                    color = if (isDark) Color.White.copy(alpha = 0.5f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+                    color = if (isDark) Color.White.copy(alpha = 0.5f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(
+                        alpha = 0.7f
+                    )
                 )
 
                 if (decodedText.isNotEmpty()) {
@@ -496,7 +507,11 @@ private fun DecoderOutputCard(
                     .weight(1f)
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(12.dp))
-                    .background(if (isDark) Color.Black.copy(alpha = 0.3f) else MaterialTheme.colorScheme.surface.copy(alpha = 0.7f))
+                    .background(
+                        if (isDark) Color.Black.copy(alpha = 0.3f) else MaterialTheme.colorScheme.surface.copy(
+                            alpha = 0.7f
+                        )
+                    )
                     .padding(12.dp)
             ) {
                 Text(
@@ -507,7 +522,9 @@ private fun DecoderOutputCard(
                         lineHeight = 26.sp
                     ),
                     color = if (decodedText.isEmpty()) {
-                        if (isDark) Color.White.copy(alpha = 0.3f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
+                        if (isDark) Color.White.copy(alpha = 0.3f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(
+                            alpha = 0.4f
+                        )
                     } else {
                         if (isDark) AccentAmber else Color(0xFF9E6400)
                     },
@@ -527,7 +544,11 @@ private fun DecoderOutputCard(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clip(RoundedCornerShape(8.dp))
-                            .background(if (isDark) Color.White.copy(alpha = 0.05f) else MaterialTheme.colorScheme.surface.copy(alpha = 0.5f))
+                            .background(
+                                if (isDark) Color.White.copy(alpha = 0.05f) else MaterialTheme.colorScheme.surface.copy(
+                                    alpha = 0.5f
+                                )
+                            )
                             .padding(horizontal = 12.dp, vertical = 8.dp),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween
@@ -538,7 +559,9 @@ private fun DecoderOutputCard(
                                 fontFamily = FontFamily.Monospace,
                                 fontWeight = FontWeight.Bold
                             ),
-                            color = if (isDark) Color.White.copy(alpha = 0.5f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
+                            color = if (isDark) Color.White.copy(alpha = 0.5f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(
+                                alpha = 0.7f
+                            ),
                             modifier = Modifier.weight(1f)
                         )
                         val clipboard = LocalClipboardManager.current
@@ -551,7 +574,9 @@ private fun DecoderOutputCard(
                             Icon(
                                 imageVector = Icons.Rounded.ContentCopy,
                                 contentDescription = "Copy raw signals",
-                                tint = if (isDark) AccentAmber.copy(alpha = 0.6f) else Color(0xFF9E6400).copy(alpha = 0.6f),
+                                tint = if (isDark) AccentAmber.copy(alpha = 0.6f) else Color(
+                                    0xFF9E6400
+                                ).copy(alpha = 0.6f),
                                 modifier = Modifier.size(12.dp)
                             )
                         }
@@ -569,7 +594,9 @@ private fun DecoderOutputCard(
                 Button(
                     onClick = onClear,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = if (isDark) Color.White.copy(alpha = 0.1f) else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.8f),
+                        containerColor = if (isDark) Color.White.copy(alpha = 0.1f) else MaterialTheme.colorScheme.surfaceVariant.copy(
+                            alpha = 0.8f
+                        ),
                         contentColor = if (isDark) Color.White else MaterialTheme.colorScheme.onSurfaceVariant
                     ),
                     shape = RoundedCornerShape(12.dp),
@@ -621,7 +648,9 @@ private fun DecoderPlaceholder(
         Icon(
             imageVector = Icons.Rounded.Camera,
             contentDescription = null,
-            tint = if (isDark) Color.White.copy(alpha = 0.3f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
+            tint = if (isDark) Color.White.copy(alpha = 0.3f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(
+                alpha = 0.4f
+            ),
             modifier = Modifier.size(72.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))
@@ -636,13 +665,18 @@ private fun DecoderPlaceholder(
         Text(
             text = "Point your camera at flash sequences to translate them back to text. Permission is required to access frame analyses.",
             style = MaterialTheme.typography.bodyMedium,
-            color = if (isDark) Color.White.copy(alpha = 0.5f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
+            color = if (isDark) Color.White.copy(alpha = 0.5f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(
+                alpha = 0.7f
+            ),
             textAlign = TextAlign.Center
         )
         Spacer(modifier = Modifier.height(24.dp))
         Button(
             onClick = onRequestPermission,
-            colors = ButtonDefaults.buttonColors(containerColor = AccentAmber, contentColor = Color(0xFF0D0D1A)),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = AccentAmber,
+                contentColor = Color(0xFF0D0D1A)
+            ),
             shape = RoundedCornerShape(14.dp)
         ) {
             Text(text = "Enable Camera", fontWeight = FontWeight.Bold)

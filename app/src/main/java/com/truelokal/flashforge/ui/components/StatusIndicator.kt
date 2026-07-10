@@ -47,11 +47,13 @@ fun StatusIndicator(
             statusColor = SOSColor
             Icons.Rounded.Warning
         }
+
         isOn -> {
             statusText = "Flashlight On"
             statusColor = AccentAmber
             Icons.Rounded.FlashOn
         }
+
         else -> {
             statusText = "Ready"
             statusColor = SuccessGreen

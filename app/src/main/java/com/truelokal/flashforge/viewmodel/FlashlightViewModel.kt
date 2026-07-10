@@ -73,7 +73,8 @@ class FlashlightViewModel(application: Application) : AndroidViewModel(applicati
     private val _liveLuminance = MutableStateFlow(0.0)
     private val _isLumaActive = MutableStateFlow(false)
 
-    private val _isOnboardingCompleted = MutableStateFlow(prefs.getBoolean("onboarding_complete", false))
+    private val _isOnboardingCompleted =
+        MutableStateFlow(prefs.getBoolean("onboarding_complete", false))
 
     private val morseDecoder = MorseSignalDecoder { text, signals ->
         _decodedText.value = text
@@ -324,6 +325,7 @@ class FlashlightViewModel(application: Application) : AndroidViewModel(applicati
                             delay(UNIT_MS)
                             controller.turnOff()
                         }
+
                         '—', '-' -> {
                             controller.turnOn()
                             delay(UNIT_MS * 3)

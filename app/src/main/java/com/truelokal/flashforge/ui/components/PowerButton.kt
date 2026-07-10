@@ -81,7 +81,9 @@ fun PowerButton(
         label = "buttonColor"
     )
     val iconColor by animateColorAsState(
-        targetValue = if (isOn) Color(0xFF1A1A2E) else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+        targetValue = if (isOn) Color(0xFF1A1A2E) else MaterialTheme.colorScheme.onSurface.copy(
+            alpha = 0.7f
+        ),
         animationSpec = tween(400),
         label = "iconColor"
     )

@@ -177,7 +177,9 @@ fun IntensityDial(
                     val isMajor = i % 5 == 0
 
                     drawLine(
-                        color = if (i.toFloat() / tickCount <= animatedIntensity) activeColor.copy(alpha = 0.6f)
+                        color = if (i.toFloat() / tickCount <= animatedIntensity) activeColor.copy(
+                            alpha = 0.6f
+                        )
                         else trackColor.copy(alpha = 0.4f),
                         start = Offset(
                             centerX + innerR * cos(tickRad).toFloat(),

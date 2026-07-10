@@ -147,8 +147,12 @@ fun MorseCodePanel(
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = if (isDark) AccentAmber else Color(0xFF9E6400),
                         cursorColor = if (isDark) AccentAmber else Color(0xFF9E6400),
-                        unfocusedContainerColor = if (isDark) MaterialTheme.colorScheme.surface.copy(alpha = 0.5f) else MaterialTheme.colorScheme.surface,
-                        focusedContainerColor = if (isDark) MaterialTheme.colorScheme.surface.copy(alpha = 0.7f) else MaterialTheme.colorScheme.surface,
+                        unfocusedContainerColor = if (isDark) MaterialTheme.colorScheme.surface.copy(
+                            alpha = 0.5f
+                        ) else MaterialTheme.colorScheme.surface,
+                        focusedContainerColor = if (isDark) MaterialTheme.colorScheme.surface.copy(
+                            alpha = 0.7f
+                        ) else MaterialTheme.colorScheme.surface,
                     ),
                     modifier = Modifier.weight(1f),
                 )
@@ -251,7 +255,6 @@ fun MorseCodePanel(
                     }
                 }
             }
-
 
 
             // Transmission progress

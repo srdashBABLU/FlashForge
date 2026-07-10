@@ -41,7 +41,10 @@ fun StrobeControls(
     val haptic = LocalHapticFeedback.current
 
     Row(
-        horizontalArrangement = Arrangement.spacedBy(12.dp, alignment = androidx.compose.ui.Alignment.CenterHorizontally),
+        horizontalArrangement = Arrangement.spacedBy(
+            12.dp,
+            alignment = androidx.compose.ui.Alignment.CenterHorizontally
+        ),
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 24.dp)
